@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config({ path: ".env" })
 import { AnkiService } from "./services/Anki";
 import { PhraseService } from "./services/Phrase";
 import { TranslateService } from "./services/Translate";
@@ -20,8 +20,7 @@ const ankiService = new AnkiService(
 
 scheduler.scheduleJob('0 15 * * *', () => {
   exec(`anki &`)
-  const deck = process.argv[3]
-  
+  const deck = process.argv[3] || process.argv[2]
   setTimeout(() => {
     ankiService.syncronize(deck)
   }, 10000)

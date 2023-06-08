@@ -24,6 +24,7 @@ export class AnkiService {
             const wordsUnknow = await this.unWordService
                 .getWordsUnknow();
 
+
             for (let index = 0; index < wordsUnknow.length; index += 1) {
                 const word = wordsUnknow[index];
                 this.logger.info(`Add word ${word} in deck named ${deck} in anki`)
